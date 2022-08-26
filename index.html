@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+  <button  onclick="readIds()">get order ids</button></br></br>
+  <label id="out"></label></br></br></br>
+  <input type="text" id="inpudId"></input></br></br>
+  <button  onclick="readOrder()">get order</button></br></br>
+  <label id="outOreder"></label>
+  
+  <script>
+
+    function readIds() {
+      var xhr = new XMLHttpRequest();
+
+      xhr.open('GET', 'http://localhost:9000/getallids', true);
+
+      xhr.onreadystatechange = function() {
+        out.innerHTML = xhr.responseText;
+      }
+      xhr.send();
+    }
+
+    function readOrder() {
+      var xhr = new XMLHttpRequest();
+
+      url='http://localhost:9000/getorder/'+inpudId.value
+      xhr.open('GET', url, true);
+
+      xhr.onreadystatechange = function() {
+        outOreder.innerHTML = xhr.responseText;
+      }
+      xhr.send();
+    }
+
+  </script>
+
+</body>
+
+</html>
